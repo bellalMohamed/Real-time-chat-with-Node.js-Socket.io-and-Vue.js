@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chat</title>
+</head>
+<body>
+	<div class="chat">
+		<ul>
+			<li v-for="message in messages">{{ message }}</li>
+		</ul>
+		<input type="text" v-model="message" v-on:keydown="send">
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+	<script>
+		new Vue({
+			el: '.chat',
+			data: {
+				message: '',
+				messages: [
+					'Hi',
+					'How are you'
+				]
+			},
+			methods: {
+				send: function (e) {
+					if (e.keyCode !== 13) {
+						return;
+					}
+					// send
+					this.message = '';
+				}
+			}
+		});
+	</script>
+</body>
+</html>
